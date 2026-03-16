@@ -1,0 +1,22 @@
+import numpy as np 
+
+from scipy.stats import norm , t
+
+#sample data 
+
+data = [12,14,15,16,17,18,19]
+
+#calculate mean and standard devision
+
+mean = np.mean(data)
+std = np.std(data)
+
+
+#95% confidence interval (using t-distribution)
+
+n = len(data)
+t_value = t.ppf(0.975 ,df =n-1)
+margin_of_error = t_value * (std / np.sqrt(n))
+
+ci = (mean - margin_of_error)
+print("95% confidence interval :" ,ci)
